@@ -1,0 +1,48 @@
+.blog-content p {
+  margin-bottom: 1em;
+}
+
+.blog-content ul, .blog-content ol {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.blog-content li {
+  margin-bottom: 0.5em;
+}
+
+.blog-content h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+.blog-content h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+/* Center images inside blog content (including editor-generated wrappers) */
+.blog-content {
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* If editor wraps images in a container, center that too */
+  .ql-blog-image {
+    text-align: center;
+  }
+
+  .ql-image-caption {
+    text-align: center;
+    margin-top: 0.25rem;
+    color: #555;
+  }
+}

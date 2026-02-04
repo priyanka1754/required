@@ -1,0 +1,86 @@
+<div class="px-2 mt-20 pb-10">
+  <h1 class="text-3xl font-semibold text-gray-800 mb-6">Write a Blog</h1>
+
+  <form class="space-y-4">
+    <!-- Title -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Title</label>
+      <input
+        name="title"
+        [(ngModel)]="blog.title"
+        class="border p-2 w-full rounded-md focus:ring focus:ring-blue-300"
+      />
+    </div>
+
+    <!-- Intro -->
+    <div>
+      <div class="flex items-center justify-between">
+        <label class="block text-gray-700 font-medium mb-1">Intro</label>
+        <button
+          type="button"
+          class="text-sm text-blue-600 hover:underline"
+          (click)="toggleIntro()"
+        >
+          {{ showIntro ? 'Collapse' : 'Expand' }}
+        </button>
+      </div>
+      <div class="border rounded-md p-2 bg-gray-50 shadow-inner">
+        <ng-container *ngIf="showIntro; else introPreview">
+          <quill-editor
+            [(ngModel)]="blog.intro"
+            name="intro"
+            [modules]="quillConfig"
+            class="w-full min-h-[120px] text-base bg-white rounded-md focus:ring-2 focus:ring-blue-300"
+            style="height: 120px"
+          ></quill-editor>
+        </ng-container>
+        <ng-template #introPreview>
+          <div class="p-3 bg-white rounded text-sm text-gray-700">
+            <div [innerText]="getIntroPreview()"></div>
+            <div class="mt-2 text-xs text-gray-500">(Intro collapsed)</div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <!-- Content (Quill Editor) -->
+    <div>
+      <label class="block text-gray-700 font-medium mb-1">Content</label>
+      <div class="border rounded-md p-2 bg-gray-50 shadow-inner">
+        <quill-editor
+          [(ngModel)]="blog.content"
+          name="content"
+          [modules]="quillConfig"
+          (onEditorCreated)="onEditorCreated($event)"
+          class="w-full min-h-[600px] text-lg bg-white rounded-md focus:ring-2 focus:ring-blue-300"
+          style="height: 350px"
+        ></quill-editor>
+      </div>
+    </div>
+
+    <!-- Inline resizing: no modal required; images have corner handles in-editor -->
+
+    <!-- Submit Button -->
+    <button
+      type="submit"
+      class="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition duration-300"
+      (click)="submitBlog()"
+      [disabled]="!blog.title || !blog.intro || !blog.content"
+      [ngClass]="{
+        'opacity-50 cursor-not-allowed':
+          !blog.title || !blog.intro || !blog.content
+      }"
+    >
+      Submit
+    </button>
+  </form>
+  <div class="mt-2">
+    <!-- Image Upload -->
+    <app-upload
+      [folderName]="'blogs'"
+      [imageCode]="blogId"
+      (fileUpload$)="onFileUploaded($event)"
+      class="w-full"
+    ></app-upload>
+  </div>
+</div>
