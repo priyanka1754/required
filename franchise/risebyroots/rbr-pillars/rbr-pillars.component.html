@@ -1,0 +1,58 @@
+<!-- src/app/risebyroots/rbr-pillars/rbr-pillars.component.html -->
+<div>
+  <h2>Pillars – {{ program?.name }}</h2>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Total Days</th>
+        <th>Sort</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pillars">
+        <td>{{ p.pillarCode }}</td>
+        <td>{{ p.name }}</td>
+        <td>{{ p.totalDays }}</td>
+        <td>{{ p.sortOrder }}</td>
+        <td>
+          <button class="btn btn-sm btn-outline-primary" (click)="manageDays(p)">
+            Days
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h4 class="mt-4">Add Pillar</h4>
+  <div class="row">
+    <div class="col-md-3">
+      <input class="form-control" placeholder="Pillar Code" [(ngModel)]="newPillar.pillarCode" />
+    </div>
+    <div class="col-md-3">
+      <input class="form-control" placeholder="Name" [(ngModel)]="newPillar.name" />
+    </div>
+    <div class="col-md-2">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Total Days"
+        [(ngModel)]="newPillar.totalDays"
+      />
+    </div>
+    <div class="col-md-2">
+      <input
+        type="number"
+        class="form-control"
+        placeholder="Sort"
+        [(ngModel)]="newPillar.sortOrder"
+      />
+    </div>
+    <div class="col-md-2">
+      <button class="btn btn-primary" (click)="addPillar()">Add</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<!-- src/app/risebyroots/rbr-programs/rbr-programs.component.html -->
+<div class="page-header">
+  <h2>RiseByRoots Programs</h2>
+  <button class="btn btn-primary" (click)="createProgram()">+ New Program</button>
+</div>
+
+<table class="table" *ngIf="!loading">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Name</th>
+      <th>Area</th>
+      <th>Age (months)</th>
+      <th>Price</th>
+      <th>Active</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let p of programs">
+      <td>{{ p.programCode }}</td>
+      <td>{{ p.name }}</td>
+      <td>{{ p.area }}</td>
+      <td>{{ p.minAgeMonths }} - {{ p.maxAgeMonths }}</td>
+      <td>{{ p.currentPrice }}</td>
+      <td>{{ p.isActive ? 'Yes' : 'No' }}</td>
+      <td>
+        <button class="btn btn-sm btn-outline-primary" (click)="editProgram(p)">Edit</button>
+        <button class="btn btn-sm btn-outline-secondary" (click)="managePillars(p)">
+          Pillars
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="loading">Loading...</div>

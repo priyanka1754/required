@@ -1,0 +1,78 @@
+<!-- src/app/risebyroots/rbr-program-form/rbr-program-form.component.html -->
+<h2>{{ isEdit ? 'Edit Program' : 'New Program' }}</h2>
+
+<form [formGroup]="form" (ngSubmit)="save()">
+  <div class="row">
+    <div class="col-md-4">
+      <label>Program Code</label>
+      <input class="form-control" formControlName="programCode" />
+    </div>
+    <div class="col-md-8">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" />
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <label>Description</label>
+    <textarea class="form-control" rows="3" formControlName="description"></textarea>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-3">
+      <label>Format</label>
+      <select class="form-control" formControlName="format">
+        <option value="digital">Digital</option>
+        <option value="physical">Physical</option>
+        <option value="hybrid">Hybrid</option>
+      </select>
+    </div>
+    <div class="col-md-3">
+      <label>Area</label>
+      <input class="form-control" formControlName="area" />
+    </div>
+    <div class="col-md-3">
+      <label>Min Age (months)</label>
+      <input type="number" class="form-control" formControlName="minAgeMonths" />
+    </div>
+    <div class="col-md-3">
+      <label>Max Age (months)</label>
+      <input type="number" class="form-control" formControlName="maxAgeMonths" />
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-3">
+      <label>Original Price</label>
+      <input type="number" class="form-control" formControlName="originalPrice" />
+    </div>
+    <div class="col-md-3">
+      <label>Current Price</label>
+      <input type="number" class="form-control" formControlName="currentPrice" />
+    </div>
+    <div class="col-md-3">
+      <label>Quantity (blank = unlimited)</label>
+      <input type="number" class="form-control" formControlName="quantity" />
+    </div>
+    <div class="col-md-3">
+      <label>Sort Order</label>
+      <input type="number" class="form-control" formControlName="sortOrder" />
+    </div>
+  </div>
+
+  <div class="row mt-2">
+    <div class="col-md-6">
+      <label>Thumbnail URL</label>
+      <input class="form-control" formControlName="thumbnailUrl" />
+    </div>
+    <div class="col-md-2 d-flex align-items-center">
+      <input type="checkbox" class="form-check-input me-2" formControlName="isActive" />
+      <label class="form-check-label">Active</label>
+    </div>
+  </div>
+
+  <div class="mt-3">
+    <button type="submit" class="btn btn-primary">Save</button>
+    <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+  </div>
+</form>
