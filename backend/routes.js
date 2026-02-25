@@ -138,11 +138,27 @@ router.use("/api/kids", kidRoute);
 
 router.use("/api/skillActivities", skillActivityRoute);
 
-
+router.use("/api/printables", require("./routes/printableRoute"));
 
 router.use("/api/dashboard", dashboardRoute);
 
 router.use("/api/one-on-one-sessions", oneOnOneSessionRoute);
 
 router.use("/api/auth", firebaseRoute);
+
+// ── RiseByRoots ──
+const rbrProgramRoute = require("./routes/risebyroots/rbrProgramRoute");
+const rbrDayRoute = require("./routes/risebyroots/rbrDayRoute");
+const rbrAccessRoute = require("./routes/risebyroots/rbrAccessRoute");
+const rbrCoinRoute = require("./routes/risebyroots/rbrCoinRoute");
+const rbrSpinRoute = require("./routes/risebyroots/rbrSpinRoute");
+const rbrProgressRoute = require("./routes/risebyroots/rbrProgressRoute");
+
+router.use("/api/rbr/programs", rbrProgramRoute);
+router.use("/api/rbr/days", rbrDayRoute);
+router.use("/api/rbr/access", rbrAccessRoute);
+router.use("/api/rbr/coins", rbrCoinRoute);
+router.use("/api/rbr/spin", rbrSpinRoute);
+router.use("/api/rbr/progress", rbrProgressRoute);
+
 module.exports = router;
